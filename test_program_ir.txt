@@ -1,0 +1,104 @@
+THREE-ADDRESS CODE (TAC)
+=================================================================
+    1:  y = 10.5
+    2:  (ARRAY_DECL, int         , 10          , list)
+    3:  
+--- BEGIN FUNCTION main ---
+    4:  a = 5
+    5:  b = 3
+    6:  t1 = b * 2
+    7:  t2 = a + t1
+    8:  a = t2
+    9:  t3 = y + 1.5
+   10:  result = t3
+   11:  t4 = a > b
+   12:  IF_FALSE t4 GOTO L1
+   13:  PRINT a
+   14:  GOTO L2
+   15:  
+L1:
+   16:  PRINT b
+   17:  
+L2:
+   18:  i = 0
+   19:  
+L3:
+   20:  t5 = i < 10
+   21:  IF_FALSE t5 GOTO L4
+   22:  t6 = i * 2
+   23:  list[i] = t6
+   24:  t7 = i + 1
+   25:  i = t7
+   26:  GOTO L3
+   27:  
+L4:
+   28:  k = 0
+   29:  
+L5:
+   30:  t8 = k < 5
+   31:  IF_FALSE t8 GOTO L6
+   32:  PRINT k
+   33:  t9 = k + 1
+   34:  k = t9
+   35:  GOTO L5
+   36:  
+L6:
+   37:  t10 = a + b
+   38:  c = t10
+   39:  t11 = c == 8
+   40:  IF_FALSE t11 GOTO L7
+   41:  PRINT result
+   42:  
+L7:
+   43:  RETURN 0
+   44:  --- END FUNCTION main ---
+
+=================================================================
+QUADRUPLES (op, arg1, arg2, result)
+=================================================================
+  No.   OP         ARG1           ARG2           RESULT
+-----------------------------------------------------------------
+  1     =          10.5                          y
+  2     ARRAY_DECL int            10             list
+  3     FUNC_BEGIN                               main
+  4     =          5                             a
+  5     =          3                             b
+  6     *          b              2              t1
+  7     +          a              t1             t2
+  8     =          t2                            a
+  9     +          y              1.5            t3
+  10    =          t3                            result
+  11    >          a              b              t4
+  12    IF_FALSE   t4                            L1
+  13    PRINT      a                             
+  14    GOTO                                     L2
+  15    LABEL                                    L1
+  16    PRINT      b                             
+  17    LABEL                                    L2
+  18    =          0                             i
+  19    LABEL                                    L3
+  20    <          i              10             t5
+  21    IF_FALSE   t5                            L4
+  22    *          i              2              t6
+  23    ARRAY_STORE t6             i              list
+  24    +          i              1              t7
+  25    =          t7                            i
+  26    GOTO                                     L3
+  27    LABEL                                    L4
+  28    =          0                             k
+  29    LABEL                                    L5
+  30    <          k              5              t8
+  31    IF_FALSE   t8                            L6
+  32    PRINT      k                             
+  33    +          k              1              t9
+  34    =          t9                            k
+  35    GOTO                                     L5
+  36    LABEL                                    L6
+  37    +          a              b              t10
+  38    =          t10                           c
+  39    ==         c              8              t11
+  40    IF_FALSE   t11                           L7
+  41    PRINT      result                        
+  42    LABEL                                    L7
+  43    RETURN     0                             
+  44    FUNC_END                                 main
